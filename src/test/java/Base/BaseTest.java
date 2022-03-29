@@ -2,6 +2,8 @@ package Base;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
 import java.util.concurrent.TimeUnit;
 import java.sql.Driver;
 
@@ -14,6 +16,7 @@ public class BaseTest {
         Webdriver.get("https://www.irishjobs.ie/login");
         Login();
         SearchRecomendations();
+        RecomendedJobsForYour();
         Webdriver.quit();
 
 
@@ -46,9 +49,7 @@ public class BaseTest {
         loginButton1.sendKeys(Keys.ENTER);
         */
         /*
-        WebElement loginButton = Webdriver.findElement(By.id("loginButton"));
-        loginButton.submit();
-        loginButton.sendKeys(Keys.ENTER);
+
 */
 
     }
@@ -63,6 +64,21 @@ public class BaseTest {
         /*Webdriver.findElement(By.xpath("//*[@id=\'page\']/div[3]/div/div[1]/div/div/h2"));
         Alert alert= Webdriver.switchTo().alert();
         alert.accept();*/
+
+    }
+
+    private void RecomendedJobsForYour(){
+
+
+        try{
+            WebElement ActualTitle = Webdriver.findElement(By.xpath("//*[@id=\'page\']/div[3]/div/div[1]/div/div/h2"));
+            String ExpectedTitle = "RECOMMENDED JOBS FOR YOU";
+            Assert.assertEquals(ExpectedTitle, ActualTitle.getText());
+            System.out.println("Assertions True");
+        }
+        catch (Exception e){
+            System.out.println("False");
+        }
 
     }
 
