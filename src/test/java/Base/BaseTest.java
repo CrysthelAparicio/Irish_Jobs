@@ -1,11 +1,8 @@
 package Base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import java.util.concurrent.TimeUnit;
 import java.sql.Driver;
 
 public class BaseTest {
@@ -15,12 +12,22 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         Webdriver = new ChromeDriver();
         Webdriver.get("https://www.irishjobs.ie/login");
-        //*[@id="app"]/div[2]/div/div[2]/button[1]
-        /////*[@id="app"]/div[2]/div/div[2]/button[2]
+        Login();
+        SearchRecomendations();
+        Webdriver.quit();
 
-        System.out.println("Login");
-     //*   WebElement CookiesButton = driver.findElement(By.xpath("*[@id=\"app\"]/div[2]/div/div[2]/button[2]"));
-       //** CookiesButton.click();
+
+
+
+
+        //*[@id="page"]/div[3]/div/div[1]/div/div/div/div[1]/div[1]/div[1]
+        //*[@id="page"]/div[3]/div/div[1]/div/div/div/div[1]/div[1]/div[2]
+    }
+
+    private void Login(){
+        /*WebElement optionOne = webDriver.findElement(By.xpath("//*[@id='flights']/div[1]/a"));
+        optionOne.click();*/
+
         //Login
         //*[@id="Email"]
         WebElement inputName = Webdriver.findElement(By.id("Email"));
@@ -32,11 +39,30 @@ public class BaseTest {
         ///* //*[@id="loginButton"]
         inputPass.sendKeys(Keys.ENTER);
 
-        WebElement loginButton = Webdriver.findElement(By.linkText("loginButton"));
-        loginButton.click();
 
+        /*
+        WebElement loginButton1 = Webdriver.findElement(By.id("loginButton"));
+        loginButton1.click();
+        loginButton1.sendKeys(Keys.ENTER);
+        */
+        /*
+        WebElement loginButton = Webdriver.findElement(By.id("loginButton"));
+        loginButton.submit();
+        loginButton.sendKeys(Keys.ENTER);
+*/
 
+    }
+    private void SearchRecomendations(){
+        /*WebElement optionOne = webDriver.findElement(By.xpath("//*[@id='flights']/div[1]/a"));
+        optionOne.click();*/
 
+        System.out.println("Find Job");
+
+        WebElement SearchButton = Webdriver.findElement(By.xpath("//*[@id=\'logged-in\']/li[1]/a"));
+        SearchButton.click();
+        /*Webdriver.findElement(By.xpath("//*[@id=\'page\']/div[3]/div/div[1]/div/div/h2"));
+        Alert alert= Webdriver.switchTo().alert();
+        alert.accept();*/
 
     }
 
