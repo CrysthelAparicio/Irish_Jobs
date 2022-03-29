@@ -1,9 +1,13 @@
 package Base;
 
+import jdk.dynalink.beans.StaticClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.sql.Driver;
 
@@ -20,17 +24,15 @@ public class BaseTest {
         Webdriver.quit();
 
 
-
-
-
-        //*[@id="page"]/div[3]/div/div[1]/div/div/div/div[1]/div[1]/div[1]
-        //*[@id="page"]/div[3]/div/div[1]/div/div/div/div[1]/div[1]/div[2]
     }
 
     private void Login(){
         /*WebElement optionOne = webDriver.findElement(By.xpath("//*[@id='flights']/div[1]/a"));
         optionOne.click();*/
 
+        //*[@id="app"]/div[2]/div/div[2]/button[2]
+        WebElement CoockieAccept = Webdriver.findElement(By.xpath(" //*[@id=\'app\']/div[2]/div/div[2]/button[2]"));
+        CoockieAccept.click();
         //Login
         //*[@id="Email"]
         WebElement inputName = Webdriver.findElement(By.id("Email"));
@@ -70,16 +72,41 @@ public class BaseTest {
     private void RecomendedJobsForYour(){
 
 
+        WebElement ActualTitle = Webdriver.findElement(By.xpath("//*[@id=\'page\']/div[3]/div/div[1]/div/div/h2"));
+        String ExpectedTitle = "RECOMMENDED JOBS FOR YOU";
+        //SoftAssert SoftAssert = new SoftAssert();
+        Assert.assertEquals(ExpectedTitle, ActualTitle.getText());
         try{
-            WebElement ActualTitle = Webdriver.findElement(By.xpath("//*[@id=\'page\']/div[3]/div/div[1]/div/div/h2"));
-            String ExpectedTitle = "RECOMMENDED JOBS FOR YOU";
-            Assert.assertEquals(ExpectedTitle, ActualTitle.getText());
-            System.out.println("Assertions True");
-        }
+            System.out.println("Assertions True Title");
+
+         }
         catch (Exception e){
-            System.out.println("False");
+            System.out.println("Assertions False");
         }
 
+        ArrayList<String> list = new ArrayList<>();
+        list.add("");
+        list.add("Elements for this Recommendations");
+        List<WebElement> li_Group = Webdriver.findElements(By.className("similar-job-listings"));
+        /*
+        int i = 1;
+        while (i<li_Group.size()){
+            WebElement element;
+            element = Webdriver.findElement(By.xpath("/html/body/div/div[3]/div/div[1]/div/div/div/div[1]/div[1]/div["+i+"]"));
+            list.add(getAttribute(element,"textContent"));
+        }
+
+        i=i+1;
+        System.out.println("Elements "+ i);
+        */
+        Boolean HaveElements = li_Group.size()>0;
+        Assert.assertTrue(HaveElements);
+        System.out.println("Assertions True Valores Mayores a 0");
+
+    }
+
+    public static String getAttribute(WebElement element, String attribute){
+        return element.getAttribute(attribute);
     }
 
     public static void main(String arg[]){
