@@ -21,7 +21,9 @@ public class BaseTest {
         Login();
         SearchRecomendations();
         RecomendedJobsForYour();
+        SearchJobsWithResults();
         SearchJobsWithoutResults();
+
         Webdriver.quit();
 
 
@@ -102,7 +104,7 @@ public class BaseTest {
         */
         Boolean HaveElements = li_Group.size()>0;
         Assert.assertTrue(HaveElements);
-        System.out.println("Assertions True Valores Mayores a 0");
+        System.out.println("Assertions True Elements Major to 0");
 
     }
 
@@ -110,11 +112,13 @@ public class BaseTest {
 
 
         WebElement inputName = Webdriver.findElement(By.id("Keywords"));
+        inputName.clear();
+
         inputName.sendKeys("TestWithoutResults");
         inputName.sendKeys(Keys.ENTER);
 
         WebElement ActualTitle = Webdriver.findElement(By.xpath("//*[@id=\'sign-in\']/div/div/h1"));
-        String ExpectedTitle = "TESTWITHOUTRESULTS JOBS";
+        String ExpectedTitle = "QATESTWITHOUTRESULTS JOBS";
 
         Assert.assertEquals(ExpectedTitle, ActualTitle.getText());
         try{
@@ -124,7 +128,30 @@ public class BaseTest {
         catch (Exception e){
             System.out.println("Assertions False");
         }
+        /*
 
+*/
+
+    }
+
+    private void SearchJobsWithResults(){
+
+
+        WebElement inputName = Webdriver.findElement(By.id("Keywords"));
+        inputName.sendKeys("QA");
+        inputName.sendKeys(Keys.ENTER);
+
+        ArrayList<String> list = new ArrayList<>();
+
+        List<WebElement> li_Group = Webdriver.findElements(By.className("job-result"));
+        Boolean HaveElements = li_Group.size()>0;
+        Assert.assertTrue(HaveElements);
+        System.out.println("Assertions True Jobs Major to 0");
+
+       /* WebElement SearchButton = Webdriver.findElement(By.xpath("//*[@id=\'logged-in\']/li[1]/a"));
+        SearchButton.click();
+        inputName.clear();
+*/
     }
 
 
