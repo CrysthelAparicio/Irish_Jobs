@@ -3,9 +3,9 @@ To compile this project you should have install and IDE Program for Java Develop
 For Example : IntellJ IDE 
 
 1. Requirements Installed
-  Java
-  JDK
- https://www.oracle.com/java/technologies/downloads/
+
+  - Java
+  - JDK   https://www.oracle.com/java/technologies/downloads/
  
 2. Configurate the System Environment
  Add Java_Home
@@ -16,8 +16,8 @@ For Example : IntellJ IDE
 3. Restart The Computer and Run the Project 
 
 Notes
-If the ChromeDriver has been updated and you have some problems to Run The Project . 
-https://www.selenium.dev/downloads/
-https://chromedriver.chromium.org/
+- If the ChromeDriver has been updated and you have some problems to Run The Project . 
+  - https://www.selenium.dev/downloads/
+  - https://chromedriver.chromium.org/
 
-Unzip the Folder downloaded and Replace on the resource Folder 
+- Unzip the Folder downloaded and Replace on the resource Folder 
