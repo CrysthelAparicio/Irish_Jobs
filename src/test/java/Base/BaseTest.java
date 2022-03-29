@@ -30,10 +30,7 @@ public class BaseTest {
     }
 
     private void Login(){
-        /*WebElement optionOne = webDriver.findElement(By.xpath("//*[@id='flights']/div[1]/a"));
-        optionOne.click();*/
 
-        //*[@id="app"]/div[2]/div/div[2]/button[2]
         WebElement CoockieAccept = Webdriver.findElement(By.xpath(" //*[@id=\'app\']/div[2]/div/div[2]/button[2]"));
         CoockieAccept.click();
         //Login
@@ -48,27 +45,16 @@ public class BaseTest {
         inputPass.sendKeys(Keys.ENTER);
 
 
-        /*
-        WebElement loginButton1 = Webdriver.findElement(By.id("loginButton"));
-        loginButton1.click();
-        loginButton1.sendKeys(Keys.ENTER);
-        */
-        /*
 
-*/
 
     }
     private void SearchRecomendations(){
-        /*WebElement optionOne = webDriver.findElement(By.xpath("//*[@id='flights']/div[1]/a"));
-        optionOne.click();*/
+
 
         System.out.println("Find Job");
 
         WebElement SearchButton = Webdriver.findElement(By.xpath("//*[@id=\'logged-in\']/li[1]/a"));
         SearchButton.click();
-        /*Webdriver.findElement(By.xpath("//*[@id=\'page\']/div[3]/div/div[1]/div/div/h2"));
-        Alert alert= Webdriver.switchTo().alert();
-        alert.accept();*/
 
     }
 
@@ -77,7 +63,7 @@ public class BaseTest {
 
         WebElement ActualTitle = Webdriver.findElement(By.xpath("//*[@id=\'page\']/div[3]/div/div[1]/div/div/h2"));
         String ExpectedTitle = "RECOMMENDED JOBS FOR YOU";
-        //SoftAssert SoftAssert = new SoftAssert();
+
         Assert.assertEquals(ExpectedTitle, ActualTitle.getText());
         try{
             System.out.println("Assertions True Title");
@@ -91,17 +77,7 @@ public class BaseTest {
         list.add("");
         list.add("Elements for this Recommendations");
         List<WebElement> li_Group = Webdriver.findElements(By.className("similar-job-listings"));
-        /*
-        int i = 1;
-        while (i<li_Group.size()){
-            WebElement element;
-            element = Webdriver.findElement(By.xpath("/html/body/div/div[3]/div/div[1]/div/div/div/div[1]/div[1]/div["+i+"]"));
-            list.add(getAttribute(element,"textContent"));
-        }
 
-        i=i+1;
-        System.out.println("Elements "+ i);
-        */
         Boolean HaveElements = li_Group.size()>0;
         Assert.assertTrue(HaveElements);
         System.out.println("Assertions True Elements Major to 0");
@@ -148,10 +124,7 @@ public class BaseTest {
         Assert.assertTrue(HaveElements);
         System.out.println("Assertions True Jobs Major to 0");
 
-       /* WebElement SearchButton = Webdriver.findElement(By.xpath("//*[@id=\'logged-in\']/li[1]/a"));
-        SearchButton.click();
-        inputName.clear();
-*/
+
     }
 
 
