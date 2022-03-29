@@ -21,6 +21,7 @@ public class BaseTest {
         Login();
         SearchRecomendations();
         RecomendedJobsForYour();
+        SearchJobsWithoutResults();
         Webdriver.quit();
 
 
@@ -105,9 +106,29 @@ public class BaseTest {
 
     }
 
-    public static String getAttribute(WebElement element, String attribute){
-        return element.getAttribute(attribute);
+    private void SearchJobsWithoutResults(){
+
+
+        WebElement inputName = Webdriver.findElement(By.id("Keywords"));
+        inputName.sendKeys("TestWithoutResults");
+        inputName.sendKeys(Keys.ENTER);
+
+        WebElement ActualTitle = Webdriver.findElement(By.xpath("//*[@id=\'sign-in\']/div/div/h1"));
+        String ExpectedTitle = "TESTWITHOUTRESULTS JOBS";
+
+        Assert.assertEquals(ExpectedTitle, ActualTitle.getText());
+        try{
+            System.out.println("Assertions True Title TESTWITHOUTRESULTS");
+
+        }
+        catch (Exception e){
+            System.out.println("Assertions False");
+        }
+
     }
+
+
+
 
     public static void main(String arg[]){
         BaseTest baseTest = new BaseTest();
